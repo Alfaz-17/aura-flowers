@@ -5,8 +5,7 @@ import { COLLECTIONS, type CollectionType } from '../item-types'
 export { COLLECTIONS, type CollectionType }
 
 
-export interface IItem {
-  _id: string
+export interface IItem extends Document {
   title: string
   slug: string
   description: string

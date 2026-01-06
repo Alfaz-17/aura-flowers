@@ -27,7 +27,7 @@ async function testApis() {
         title: testTitle,
         slug: 'test-item-' + Date.now(),
         description: 'This is a test item',
-        collection: 'artificial-flowers',
+        category: 'artificial-flowers',
         images: ['http://example.com/image.jpg'],
         price: 99.99
     })

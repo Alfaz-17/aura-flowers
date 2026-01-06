@@ -9,11 +9,15 @@ import "./globals.css"
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+  fallback: ["system-ui", "arial"],
 })
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-serif",
+  display: "swap",
+  fallback: ["Georgia", "serif"],
 })
 
 export const metadata: Metadata = {
