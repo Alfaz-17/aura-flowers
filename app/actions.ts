@@ -32,7 +32,7 @@ export async function createItem(formData: FormData) {
 
   const title = formData.get('title') as string
   const description = formData.get('description') as string
-  const collection = formData.get('collection') as CollectionType
+  const category = formData.get('category') as CollectionType
   const price = formData.get('price') as string
   const dimensions = formData.get('dimensions') as string
   const material = formData.get('material') as string
@@ -69,7 +69,7 @@ export async function createItem(formData: FormData) {
     title,
     slug,
     description,
-    collection,
+    category,
     images,
     price: price ? parseFloat(price) : undefined,
     dimensions: dimensions || undefined,
@@ -77,16 +77,16 @@ export async function createItem(formData: FormData) {
   })
 
   revalidatePath('/admin/items')
-  revalidatePath(`/collections/${collection}`)
+  revalidatePath(`/collections/${category}`)
   revalidatePath('/collections')
 
   return { success: true, item: JSON.parse(JSON.stringify(item)) }
 }
 
-export async function getItems(collection?: CollectionType) {
+export async function getItems(category?: CollectionType) {
   await connectDB()
 
-  const query = collection ? { collection } : {}
+  const query = category ? { category } : {}
   const items = await Item.find(query).sort({ createdAt: -1 }).lean()
 
   return JSON.parse(JSON.stringify(items))
@@ -110,7 +110,7 @@ export async function updateItem(id: string, formData: FormData) {
 
   const title = formData.get('title') as string
   const description = formData.get('description') as string
-  const collection = formData.get('collection') as CollectionType
+  const category = formData.get('category') as CollectionType
   const price = formData.get('price') as string
   const dimensions = formData.get('dimensions') as string
   const material = formData.get('material') as string
@@ -131,7 +131,7 @@ export async function updateItem(id: string, formData: FormData) {
   }
 
   if (!title || !description || !collection) {
-    throw new Error('Title, description, and collection are required')
+    throw new Error('Title, description, and category are required')
   }
 
   let slug = generateSlug(title)
@@ -149,7 +149,7 @@ export async function updateItem(id: string, formData: FormData) {
       title,
       slug,
       description,
-      collection,
+      category,
       images,
       price: price ? parseFloat(price) : undefined,
       dimensions: dimensions || undefined,
@@ -163,7 +163,7 @@ export async function updateItem(id: string, formData: FormData) {
   }
 
   revalidatePath('/admin/items')
-  revalidatePath(`/collections/${collection}`)
+  revalidatePath(`/collections/${category}`)
   revalidatePath(`/item/${slug}`)
   revalidatePath('/collections')
 
@@ -181,17 +181,17 @@ export async function deleteItem(id: string) {
   }
 
   revalidatePath('/admin/items')
-  revalidatePath(`/collections/${item.collection}`)
+  revalidatePath(`/collections/${item.category}`)
   revalidatePath('/collections')
 
   return { success: true }
 }
 
 // Public function to get items count by collection
-export async function getItemsCount(collection?: CollectionType) {
+export async function getItemsCount(category?: CollectionType) {
   await connectDB()
 
-  const query = collection ? { collection } : {}
+  const query = category ? { category } : {}
   const count = await Item.countDocuments(query)
 
   return count

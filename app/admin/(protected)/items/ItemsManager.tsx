@@ -11,7 +11,7 @@ type Item = {
   title: string
   slug: string
   description: string
-  collection: CollectionType
+  category: CollectionType
   images: string[]
   price?: number
   dimensions?: string
@@ -144,14 +144,14 @@ export default function ItemsManager({ initialItems }: { initialItems: Item[] })
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Collection *</label>
+                <label className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Category *</label>
                 <select
-                  name="collection"
+                  name="category"
                   required
-                  defaultValue={editingItem?.collection}
+                  defaultValue={editingItem?.category}
                   className="w-full bg-transparent border-b border-foreground/20 py-2 focus:outline-none focus:border-primary"
                 >
-                  <option value="">Select Collection</option>
+                  <option value="">Select Category</option>
                   {COLLECTIONS.map((col) => (
                     <option key={col} value={col}>
                       {col.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
@@ -355,7 +355,7 @@ export default function ItemsManager({ initialItems }: { initialItems: Item[] })
                 <div className="flex-1 space-y-2">
                   <h3 className="font-serif text-xl">{item.title}</h3>
                   <p className="text-xs uppercase tracking-wider text-primary">
-                    {item.collection.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+                    {item.category.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
                   </p>
                   <p className="text-sm text-muted-foreground line-clamp-2">{item.description}</p>
                   {item.price && (

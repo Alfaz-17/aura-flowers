@@ -10,7 +10,7 @@ export interface IItem extends Document {
   slug: string
   description: string
   images: string[]
-  collection: CollectionType
+  category: CollectionType
   price?: number
   dimensions?: string
   material?: string
@@ -40,13 +40,14 @@ const ItemSchema: Schema = new Schema(
       type: [String],
       default: [],
     },
-    collection: {
+    category: {
       type: String,
-      required: [true, 'Collection is required'],
+      required: [true, 'Category is required'],
       enum: COLLECTIONS,
     },
     price: {
       type: Number,
+      // ...
     },
     dimensions: {
       type: String,
@@ -61,7 +62,7 @@ const ItemSchema: Schema = new Schema(
 )
 
 // Create index for faster queries
-ItemSchema.index({ collection: 1, createdAt: -1 })
+ItemSchema.index({ category: 1, createdAt: -1 })
 ItemSchema.index({ slug: 1 })
 
 // Prevent model recompilation during hot reload

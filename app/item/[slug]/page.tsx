@@ -25,11 +25,11 @@ export default async function ItemPage({ params }: { params: Promise<{ slug: str
       <div className="pt-32 md:pt-48 pb-24 px-6 md:px-12">
         <div className="max-w-screen-2xl mx-auto">
           <Link
-            href={`/collections/${item.collection}`}
+            href={`/collections/${item.category}`}
             className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors mb-12"
           >
             <ArrowLeft size={12} />
-            Back to {item.collection.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+            Back to {item.category.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
@@ -59,7 +59,7 @@ export default async function ItemPage({ params }: { params: Promise<{ slug: str
             <div className="space-y-8">
               <div className="space-y-4">
                 <p className="text-[10px] uppercase tracking-[0.2em] text-primary font-bold">
-                  {item.collection.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+                  {item.category.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
                 </p>
                 <h1 className="font-serif text-4xl md:text-6xl leading-tight text-primary">{item.title}</h1>
                 {item.price && (
@@ -93,7 +93,7 @@ export default async function ItemPage({ params }: { params: Promise<{ slug: str
                   target="_blank"
                   rel="noopener noreferrer"
                   href={`https://wa.me/919737828614?text=${encodeURIComponent(
-                    `Hello Aura House of Flowers,\n\nI am interested in the "${item.title}" (${item.collection}).\n\nCould you please provide more details?`
+                    `Hello Aura House of Flowers,\n\nI am interested in the "${item.title}" (${item.category}).\n\nCould you please provide more details?`
                   )}`}
                   className="inline-flex items-center gap-3 px-12 py-5 bg-[#25D366] text-white text-[11px] uppercase tracking-[0.3em] font-semibold hover:bg-[#25D366]/90 transition-all rounded-none"
                 >
