@@ -173,7 +173,7 @@ export default function ItemsManager({ initialItems }: { initialItems: Item[] })
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Price ($)</label>
+                  <label className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Price (Rs)</label>
                   <input
                     name="price"
                     type="number"
@@ -359,7 +359,7 @@ export default function ItemsManager({ initialItems }: { initialItems: Item[] })
                   </p>
                   <p className="text-sm text-muted-foreground line-clamp-2">{item.description}</p>
                   {item.price && (
-                    <p className="text-sm font-medium">${item.price}</p>
+                    <p className="text-sm font-medium">Rs. {item.price}</p>
                   )}
                 </div>
                 <div className="flex gap-2">

@@ -3,86 +3,96 @@
 
 @custom-variant dark (&:is(.dark *));
 
-:root {
-  /* Aura House of Flowers: Calm, Intentional, Refined */
-  --background: oklch(0.98 0.01 70); /* Soft Ivory/Stone */
-  --foreground: oklch(0.25 0.02 70); /* Deep Charcoal/Olive-Grey */
+  /* ===== Aura – House of Flowers (Consistent Brand Palette) ===== */
 
-  --card: oklch(0.96 0.01 70);
-  --card-foreground: oklch(0.25 0.02 70);
+  /* Backgrounds: Warm & Clean */
+  --background: oklch(0.99 0.01 95); /* Porcelain White */
+  --foreground: oklch(0.20 0.05 265); /* Deep Blue-Black text */
 
-  --popover: oklch(0.98 0.01 70);
-  --popover-foreground: oklch(0.25 0.02 70);
+  --card: oklch(1.0 0 0);
+  --card-foreground: oklch(0.20 0.05 265);
 
-  /* Updated Palette: Higher Contrast & Richer Tones */
-  --primary: oklch(0.40 0.10 125); /* Deep Vibrant Moss - More noticeable than previous */
-  --primary-foreground: oklch(0.98 0.01 70);
+  --popover: oklch(1.0 0 0);
+  --popover-foreground: oklch(0.20 0.05 265);
 
-  --secondary: oklch(0.95 0.02 70); /* Slightly lighter than before for subtle cards */
-  --secondary-foreground: oklch(0.25 0.02 70);
+  /* Primary: The Shop Identity (Royal Blue) */
+  --primary: oklch(0.32 0.18 270); /* Deep Royal Blue */
+  --primary-foreground: oklch(0.98 0.02 95); /* White Text on Blue */
 
-  --muted: oklch(0.90 0.02 70); /* Distinctly darker than background for "grey" areas */
-  --muted-foreground: oklch(0.40 0.02 70);
+  /* Secondary: The Logo (Luxurious Gold) */
+  /* Used for specialized backgrounds (tinted) or distinctive text */
+  --secondary: oklch(0.75 0.16 85); /* Rich Gold/Amber */
+  --secondary-foreground: oklch(0.20 0.05 265); /* Dark Text on Gold */
 
-  --accent: oklch(0.70 0.15 50); /* Burnt Copper / Terra Cotta - High visual interest */
-  --accent-foreground: oklch(0.98 0.01 70);
+  /* Accent: The Atmosphere (Soft Peach/Drapes) */
+  /* Used for highlights, subtle gradients, and warm touches */
+  --accent: oklch(0.82 0.12 55); /* Soft Warm Peach */
+  --accent-foreground: oklch(0.20 0.05 265);
 
-  --destructive: oklch(0.5 0.15 30);
-  --destructive-foreground: oklch(0.98 0.01 70);
+  /* Muted: Subtle Support */
+  --muted: oklch(0.96 0.01 95);
+  --muted-foreground: oklch(0.50 0.05 265); /* Muted Blue-Grey */
 
-  --border: oklch(0.85 0.01 70);
-  --input: oklch(0.85 0.01 70);
-  --ring: oklch(0.35 0.05 120);
+  --destructive: oklch(0.55 0.20 25);
+  --destructive-foreground: oklch(0.98 0.00 0);
 
-  --radius: 0.125rem; /* Sharp, architectural edges */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --border: oklch(0.92 0.01 95);
+  --input: oklch(0.92 0.01 95);
+  --ring: oklch(0.32 0.18 270); /* Blue Focus Ring */
+
+  /* Radius: Consistent Softness */
+  --radius: 0.75rem;
+
+  /* Sidebar (Admin Consistency) */
+  --sidebar: oklch(0.98 0.01 95);
+  --sidebar-foreground: oklch(0.20 0.05 265);
+  --sidebar-primary: oklch(0.32 0.18 270);
+  --sidebar-primary-foreground: oklch(0.98 0.02 95);
+  --sidebar-accent: oklch(0.95 0.02 95);
+  --sidebar-accent-foreground: oklch(0.20 0.05 265);
+  --sidebar-border: oklch(0.90 0.01 95);
+  --sidebar-ring: oklch(0.32 0.18 270);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.90 0.05 120); /* Pale Sage for Dark Mode */
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.25 0.02 70); /* Lighter gray for dark mode cards */
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.20 0.02 70);
-  --muted-foreground: oklch(0.60 0 0);
-  --accent: oklch(0.60 0.15 50); /* Burnt Copper for Dark Mode */
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  /* ===== Dark Mode – Premium Night Boutique ===== */
+
+  --background: oklch(0.13 0.05 270); /* Deep Navy */
+  --foreground: oklch(0.97 0.02 95);
+
+  --card: oklch(0.16 0.05 270);
+  --card-foreground: oklch(0.97 0.02 95);
+
+  --popover: oklch(0.13 0.05 270);
+  --popover-foreground: oklch(0.97 0.02 95);
+
+  --primary: oklch(0.55 0.22 270); /* Glowing Royal Blue */
+  --primary-foreground: oklch(0.12 0.04 270);
+
+  --secondary: oklch(0.28 0.06 270);
+  --secondary-foreground: oklch(0.97 0.02 95);
+
+  --muted: oklch(0.22 0.05 270);
+  --muted-foreground: oklch(0.70 0.04 270);
+
+  --accent: oklch(0.62 0.20 135);
+  --accent-foreground: oklch(0.12 0.04 270);
+
+  --destructive: oklch(0.58 0.20 28);
+  --destructive-foreground: oklch(0.97 0.02 95);
+
+  --border: oklch(0.25 0.05 270);
+  --input: oklch(0.25 0.05 270);
+  --ring: oklch(0.55 0.22 270);
+
+  --sidebar: oklch(0.14 0.05 270);
+  --sidebar-foreground: oklch(0.97 0.02 95);
+  --sidebar-primary: oklch(0.55 0.22 270);
+  --sidebar-primary-foreground: oklch(0.12 0.04 270);
+  --sidebar-accent: oklch(0.22 0.05 270);
+  --sidebar-accent-foreground: oklch(0.97 0.02 95);
+  --sidebar-border: oklch(0.25 0.05 270);
+  --sidebar-ring: oklch(0.55 0.22 270);
 }
 
 @theme inline {

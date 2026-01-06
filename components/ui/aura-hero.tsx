@@ -3,194 +3,133 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, ChevronRight } from 'lucide-react'
+import { ArrowRight, Play } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { AnimatedGroup } from '@/components/ui/animated-group'
-import { SparklesCore } from '@/components/ui/sparkles'
-
-const transitionVariants = {
-    item: {
-        hidden: {
-            opacity: 0,
-            filter: 'blur(12px)',
-            y: 12,
-        },
-        visible: {
-            opacity: 1,
-            filter: 'blur(0px)',
-            y: 0,
-            transition: {
-                type: 'spring',
-                bounce: 0.3,
-                duration: 1.5,
-            },
-        },
-    },
-}
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 export function AuraHeroSection() {
+    const { scrollY } = useScroll();
+    const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+    const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+
     return (
-        <main className="overflow-hidden bg-background">
-            {/* Subtle background gradients matching Aura's aesthetic */}
-            <div
-                aria-hidden
-                className="z-[2] absolute inset-0 pointer-events-none isolate opacity-30 contain-strict hidden lg:block">
-                <div className="w-[35rem] h-[80rem] -translate-y-[350px] absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,oklch(0.35_0.05_120_/_0.08)_0,oklch(0.35_0.05_120_/_0.02)_50%,transparent_80%)]" />
-                <div className="h-[80rem] absolute left-0 top-0 w-56 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,oklch(0.35_0.05_120_/_0.06)_0,oklch(0.35_0.05_120_/_0.02)_80%,transparent_100%)] [translate:5%_-50%]" />
-                <div className="h-[80rem] -translate-y-[350px] absolute left-0 top-0 w-56 -rotate-45 bg-[radial-gradient(50%_50%at_50%_50%,oklch(0.35_0.05_120_/_0.04)_0,oklch(0.35_0.05_120_/_0.02)_80%,transparent_100%)]" />
-            </div>
+        <main className="relative bg-background overflow-hidden min-h-[95vh] flex items-center justify-center pt-20 pb-16 lg:pt-0 lg:pb-0">
+             {/* Cinematic Background Elements */}
+             <div className="absolute top-0 right-0 w-[60%] h-full bg-secondary/10 rounded-l-[150px] -z-10 hidden lg:block backdrop-blur-3xl" />
+             <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px] -z-10" />
 
-            <section>
-                <div className="relative pt-32 md:pt-48">
-                    {/* Sparkles background */}
-                    <div className="absolute inset-0 w-full h-full -z-10">
-                        <SparklesCore
-                            id="aura-main-sparkles"
-                            background="transparent"
-                            minSize={0.4}
-                            maxSize={1}
-                            particleDensity={60}
-                            className="w-full h-full"
-                            particleColor="#8b9f8d"
-                            speed={0.4}
-                        />
-                    </div>
-                    
-                    <div aria-hidden className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--background)_75%)]" />
-                    
-                    <div className="mx-auto max-w-7xl px-6">
-                        <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
-                            <AnimatedGroup variants={transitionVariants}>
-                                <Link
-                                    href="/collections"
-                                    className="hover:bg-background bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border border-primary/10 p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300">
-                                    <span className="text-foreground text-[11px] uppercase tracking-[0.3em] font-semibold">18 Years of Excellence</span>
-                                    <span className="block h-4 w-0.5 border-l bg-primary/20"></span>
-
-                                    <div className="bg-background group-hover:bg-primary/10 size-6 overflow-hidden rounded-full duration-500">
-                                        <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
-                                            <span className="flex size-6">
-                                                <ArrowRight className="m-auto size-3" />
-                                            </span>
-                                            <span className="flex size-6">
-                                                <ArrowRight className="m-auto size-3" />
-                                            </span>
-                                        </div>
-                                    </div>
-                                </Link>
-                    
-                              <h1 className="mt-8 max-w-4xl mx-auto font-serif text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem] leading-[1.1]">
-                                    Rooted in Design. <br />
-                                    <span className="italic">Recognized</span> for Quality.
-                                </h1>
-                                <p className="mx-auto mt-8 max-w-2xl text-balance text-lg text-muted-foreground font-light leading-loose">
-                                    18 years premium artificial florals for modern interiors. Premium distributor of curated artificial floral décor and botanical elements.
-                                </p>
-                            </AnimatedGroup>
-
-                            <AnimatedGroup
-                                variants={{
-                                    container: {
-                                        visible: {
-                                            transition: {
-                                                staggerChildren: 0.05,
-                                                delayChildren: 0.75,
-                                            },
-                                        },
-                                    },
-                                    ...transitionVariants,
-                                }}
-                                className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row">
-                                <div
-                                    key={1}
-                                    className="bg-foreground/10 rounded-[14px] border border-primary/10 p-0.5">
-                                    <Button
-                                        asChild
-                                        size="lg"
-                                        className="rounded-xl px-8 text-[11px] uppercase tracking-[0.3em] font-semibold bg-foreground text-background hover:bg-foreground/90">
-                                        <Link href="/collections">
-                                            <span className="text-nowrap">Explore Collections</span>
-                                        </Link>
-                                    </Button>
-                                </div>
-                                <Button
-                                    key={2}
-                                    asChild
-                                    size="lg"
-                                    variant="ghost"
-                                    className="h-11 rounded-xl px-8 text-[11px] uppercase tracking-[0.3em] font-semibold">
-                                    <Link href="/contact">
-                                        <span className="text-nowrap">Book Appointment</span>
-                                    </Link>
-                                </Button>
-                            </AnimatedGroup>
+            <div className="container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+                
+                {/* Text Content - Staggered Reveal */}
+                <motion.div 
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.15,
+                                delayChildren: 0.2
+                            }
+                        }
+                    }}
+                    className="space-y-10 lg:pr-12 text-center lg:text-left"
+                >
+                     <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } }}>
+                        <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/80 backdrop-blur-md shadow-sm border border-white/40 mb-8">
+                            <span className="relative flex h-2.5 w-2.5">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+                            </span>
+                            <span className="text-[11px] uppercase tracking-[0.25em] font-bold text-primary">
+                                Est. 2008 • Bhavnagar
+                            </span>
                         </div>
-                    </div>
 
-                    <AnimatedGroup
-                        variants={{
-                            container: {
-                                visible: {
-                                    transition: {
-                                        staggerChildren: 0.05,
-                                        delayChildren: 0.75,
-                                    },
-                                },
-                            },
-                            ...transitionVariants,
-                        }}>
-                        <div className="relative -mr-56 mt-8 overflow-hidden px-2 sm:mr-0 sm:mt-12 md:mt-20">
-                            <div
-                                aria-hidden
-                                className="bg-gradient-to-b to-background absolute inset-0 z-10 from-transparent from-35%"
-                            />
-                            <div className="inset-shadow-2xs ring-background bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border border-primary/10 p-4 shadow-lg shadow-zinc-950/15 ring-1">
-                                <div className="relative aspect-[15/8] w-full overflow-hidden rounded-2xl">
-                                    <Image
-                                        src="/luxury-interior-with-artificial-floral-installatio.jpg"
-                                        alt="Aura House of Flowers - Premium Floral Installations"
-                                        fill
-                                        className="object-cover"
-                                        priority
-                                    />
-                                </div>
+                        <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl leading-[1.05] text-primary tracking-tight">
+                            Nature, <br/>
+                            <span className="italic font-light text-foreground/90">Perfected.</span>
+                        </h1>
+                     </motion.div>
+
+                    <motion.p 
+                        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } }}
+                        className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-lg mx-auto lg:mx-0"
+                    >
+                        Transform your space with premium artificial botanicals and handcrafted decor. 
+                        Visit our studio or shop our curated collections online.
+                    </motion.p>
+
+                    <motion.div 
+                        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } }}
+                        className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start pt-4"
+                    >
+                        <Button asChild size="lg" className="rounded-full h-16 px-10 bg-primary text-primary-foreground hover:bg-primary/90 text-xs uppercase tracking-[0.2em] font-bold shadow-2xl shadow-primary/25 hover:scale-105 transition-transform duration-300">
+                            <Link href="/collections">
+                                Shop Collections
+                            </Link>
+                        </Button>
+                        <Link href="/contact" className="group flex items-center gap-3 text-primary font-semibold text-xs uppercase tracking-[0.2em] hover:opacity-70 transition-opacity">
+                            <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                                <ArrowRight size={14} className="ml-0.5" />
                             </div>
-                        </div>
-                    </AnimatedGroup>
-                </div>
-            </section>
-            
-            {/* Trust section with elegant branding */}
-            <section className="bg-background pb-16 pt-16 md:pb-32 border-t border-primary/10">
-                <div className="group relative m-auto max-w-5xl px-6">
-                    <div className="absolute inset-0 z-10 flex scale-95 items-center justify-center opacity-0 duration-500 group-hover:scale-100 group-hover:opacity-100">
-                        <Link
-                            href="/about"
-                            className="block text-sm duration-150 hover:opacity-75">
-                            <span className="text-muted-foreground">Our Story</span>
-                            <ChevronRight className="ml-1 inline-block size-3" />
+                            Visit Studio
                         </Link>
+                    </motion.div>
+                </motion.div>
+
+                {/* Visual Content - Cinematic Frame */}
+                <motion.div 
+                    style={{ y: y1 }}
+                    initial={{ opacity: 0, scale: 0.9, filter: "blur(20px)" }}
+                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                    className="relative perspective-1000"
+                >
+                    <div className="relative aspect-[4/5] md:aspect-[3.5/4] lg:aspect-[4/5] w-full max-w-xl mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl shadow-primary/20 border-[8px] border-white ring-1 ring-black/5 group cursor-none">
+                        
+                        {/* The Cinematic Image with 'Ken Burns' effect (Slow Zoom) */}
+                        <motion.div 
+                            className="relative w-full h-full"
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ duration: 8, ease: "linear" }}
+                        >
+                             <Image
+                                src="/main-refined.png" 
+                                alt="Aura Flower Shop Storefront"
+                                fill
+                                className="object-cover"
+                                priority
+                            />
+                        </motion.div>
+
+                        {/* Cinematic Vignette Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent opacity-40 pointer-events-none" />
+
+                         {/* Floating Glass Card */}
+                        <motion.div 
+                            style={{ y: y2 }}
+                            className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-white/20 shadow-xl"
+                        >
+                             <div className="flex justify-between items-end text-white">
+                                <div>
+                                    <p className="text-[10px] uppercase tracking-[0.3em] font-medium opacity-80 mb-2">Featured Item</p>
+                                    <p className="font-serif text-3xl tracking-wide">The Royal Orchid</p>
+                                </div>
+                                <div className="h-10 w-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30">
+                                    <ArrowRight size={16} />
+                                </div>
+                             </div>
+                        </motion.div>
                     </div>
-                    <div className="group-hover:blur-xs mx-auto mt-12 grid max-w-2xl grid-cols-4 gap-x-12 gap-y-8 transition-all duration-500 group-hover:opacity-50 sm:gap-x-16 sm:gap-y-14 text-center">
-                        <div className="flex flex-col items-center justify-center space-y-2">
-                            <p className="font-serif text-4xl text-primary">18+</p>
-                            <p className="text-xs text-muted-foreground uppercase tracking-wider">Years</p>
-                        </div>
-                        <div className="flex flex-col items-center justify-center space-y-2">
-                            <p className="font-serif text-4xl text-primary">500+</p>
-                            <p className="text-xs text-muted-foreground uppercase tracking-wider">Projects</p>
-                        </div>
-                        <div className="flex flex-col items-center justify-center space-y-2">
-                            <p className="font-serif text-4xl text-primary">100%</p>
-                            <p className="text-xs text-muted-foreground uppercase tracking-wider">Premium</p>
-                        </div>
-                        <div className="flex flex-col items-center justify-center space-y-2">
-                            <p className="font-serif text-4xl text-primary">∞</p>
-                            <p className="text-xs text-muted-foreground uppercase tracking-wider">Elegance</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                    
+                    {/* Abstract Floating Orbs for Depth */}
+                    <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-accent/20 rounded-full blur-[80px] -z-10 mix-blend-multiply" />
+                    <div className="absolute -top-16 -left-16 w-64 h-64 bg-secondary/30 rounded-full blur-[80px] -z-10 mix-blend-multiply" />
+                </motion.div>
+            </div>
         </main>
     )
 }
